@@ -1,0 +1,22 @@
+{
+    "name": "trismegiste/wam-prolog",
+    "description": "Warren Abstract Machine for Prolog",
+    "type": "library",
+    "keywords": ["inference", "engine", "prolog", "cli", "warren", "abstract", "machine"],
+    "authors": [
+        {
+            "name": "Trismegiste"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.3"
+    },
+    "autoload": {
+        "psr-0": {
+            "Trismegiste\\Prolog\\": "src"
+        }
+    },
+    "target-dir": "Trismegiste/Prolog",
+    "license": "CC-BY-SA-3.0",
+    "version": "0.9"
+}
