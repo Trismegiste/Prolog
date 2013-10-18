@@ -1,6 +1,6 @@
 # WamBundle
 
-[![Build Status](https://secure.travis-ci.org/Trismegiste/Wam.png?branch=master)](http://travis-ci.org/Trismegiste/Wam)
+[![Build Status](https://secure.travis-ci.org/Trismegiste/Prolog.png?branch=master)](http://travis-ci.org/Trismegiste/Prolog)
 
 ## A Warren's Abstract Machine
 Original java version by Stefan Büttcher.<br/>
