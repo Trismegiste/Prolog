@@ -4,11 +4,14 @@
         <testsuite name="unit">
             <directory>./tests</directory>
         </testsuite>
-        <testsuite name="stress">
-            <file>./tests/WAMEightQueensStress.php</file>
-        </testsuite>
     </testsuites>
     
+    <groups>
+        <exclude>
+            <group>stress</group>
+        </exclude>
+    </groups>
+
     <filter>
         <whitelist addUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">src</directory>

@@ -5,7 +5,7 @@ use Trismegiste\Prolog\WAMService;
 /**
  * Test for WAMService : example of classical non deterministic problem
  */
-class WAMEightQueensStress extends WAM_TestCase
+class WAMEightQueensTest extends WAM_TestCase
 {
 
     public function testFixtures()
@@ -20,6 +20,7 @@ class WAMEightQueensStress extends WAM_TestCase
 
     /**
      * @depends testFixtures
+     * @group stress
      */
     public function testAllSolutions(WAMService $wam)
     {
