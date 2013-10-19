@@ -127,9 +127,8 @@ You can make money with this as long as you follow these rules. In other words :
  * Lead : [Trismegiste](https://github.com/Trismegiste)
 
 ## Special thanks
- * Johann Sebastian Bach
- * William Gibson
- * Gene Roddenberry
+ * [Igor Wiedler](https://github.com/igorw) to bring the idea for decoupling this library
+from its symfony dependencies
 
 [1]: http://en.wikipedia.org/wiki/Warren_Abstract_Machine
 [2]: http://en.wikipedia.org/wiki/Prolog
