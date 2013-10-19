@@ -105,6 +105,11 @@ I like TDD for debugging. Sometimes it's annoying but it is always
 for the best, specially accross the net. With the help of TravisCI, tracking bugs
 is a piece of cake.
 
+## Also appears in
+
+ * Symfony2 bundle for this lib with extra GUI features : [WamBundle][4]
+ * A CLI tool for converting hepburn notation to hiragana for japanese names : [Hiragana][5]
+
 ## Licence
 ![cc-by-sa](http://i.creativecommons.org/l/by-sa/3.0/88x31.png)
 
@@ -129,3 +134,5 @@ You can make money with this as long as you follow these rules. In other words :
 [1]: http://en.wikipedia.org/wiki/Warren_Abstract_Machine
 [2]: http://en.wikipedia.org/wiki/Prolog
 [3]: http://en.wikipedia.org/wiki/Inference_engine
+[4]: https://github.com/Trismegiste/WamBundle
+[5]: https://github.com/Trismegiste/Hiragana
