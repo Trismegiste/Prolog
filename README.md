@@ -1,17 +1,17 @@
-# WamBundle
+# Trismegiste/Prolog
 
 [![Build Status](https://secure.travis-ci.org/Trismegiste/Prolog.png?branch=master)](http://travis-ci.org/Trismegiste/Prolog)
 
-## A Warren's Abstract Machine
+## A [Warren's Abstract Machine][1]
 Original java version by Stefan Büttcher.<br/>
 PHP port and PhpUnit tests by Florent Genette.
 
-Version alpha
+Version 1.4
 
 ## What ?
 A Warren Abstract Machine (WAM) is a virtual machine (like a JVM for Java) for
-Prolog. This library is intended to run on PHP 5.4.
-Prolog is a logic language which solve problems with an inference engine.
+[Prolog][2]. This library is intended to run on PHP 5.4.
+Prolog is a logic language which solve problems with an [inference engine][3].
 
 
 David Warren wrote in "WAM - A tutorial reconstruction" :
@@ -125,3 +125,7 @@ You can make money with this as long as you follow these rules. In other words :
  * Johann Sebastian Bach
  * William Gibson
  * Gene Roddenberry
+
+[1]: http://en.wikipedia.org/wiki/Warren_Abstract_Machine
+[2]: http://en.wikipedia.org/wiki/Prolog
+[3]: http://en.wikipedia.org/wiki/Inference_engine
