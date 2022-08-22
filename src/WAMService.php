@@ -51,7 +51,7 @@ class WAMService extends WAM
 
     // runQuery compiles a query given by s into a WAM program, adds it to the program in memory
     // and jumps to the label "query$", starting the execution
-    public function runQuery($s)
+    public function runQuery($s): array
     {
         $qc = new QueryCompiler($this);
         $this->reset();
@@ -76,7 +76,7 @@ class WAMService extends WAM
         // reset the WAM's registers and jump to label "query$" (the current query, of course)
         $this->programCounter = $this->p->getLabelIndex("query$");
 
-        $stackResult = array();
+        $stackResult = [];
         $getOut = false;
         do {
             $result = new Solution();

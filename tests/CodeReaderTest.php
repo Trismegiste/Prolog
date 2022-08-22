@@ -14,6 +14,8 @@ class CodeReaderTest extends \PHPUnit\Framework\TestCase
     {
         $tempFile = tempnam('.', 'wam');
         CodeReader::prologToWamCode(__DIR__ . '/fixtures/basket.pro', $tempFile);
+        $this->assertStringStartsWith('total', file_get_contents($tempFile));
+        
         return $tempFile;
     }
 
