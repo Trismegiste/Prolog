@@ -128,12 +128,12 @@ abstract class WAM extends PrologContext
     /**
      * displays a string
      */
-    abstract public function write($s);
+    abstract public function write(string $s): void;
 
     /**
      * displays a string followed by CRLF
      */
-    abstract public function writeLn($s);
+    abstract public function writeLn(string $s): void;
 
     /**
      * displays a debug information line

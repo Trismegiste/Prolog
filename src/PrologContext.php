@@ -19,7 +19,7 @@ abstract class PrologContext
      * @param string $s the query
      * @return mixed
      */
-    abstract public function runQuery($s);
+    abstract public function runQuery(string $s);
 
     /**
      * Retract the last clause identified by its predicate

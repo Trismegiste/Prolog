@@ -42,7 +42,7 @@ class QueryCompiler extends Compiler
         return false;
     }
 
-    public function compile($aQuery)
+    public function compile(string $aQuery)
     {
         $queryList = $this->stringToList($aQuery);
         $struc = new CompilerStructure();

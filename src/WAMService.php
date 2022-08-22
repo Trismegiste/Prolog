@@ -18,18 +18,18 @@ class WAMService extends WAM
 
     protected $stringBuffer;
 
-    protected function readLn()
+    protected function readLn(): string
     {
         return "";
     }
 
-    public function write($s)
+    public function write(string $s): void
     {
         $this->stringBuffer->write($s);
     }
 
     // displays a string followed by CRLF
-    public function writeLn($s)
+    public function writeLn(string $s): void
     {
         $this->stringBuffer->writeLn($s);
     }
@@ -42,7 +42,7 @@ class WAMService extends WAM
      * @todo Duplicate code in consult
      * @todo refactor the loading and compiling in WAMService 
      */
-    public function addProgram(Program $prog)
+    public function addProgram(Program $prog): void
     {
         $this->p->owner = $this;
         $this->p->addProgram($prog);  // add program to that already in memory
@@ -51,7 +51,7 @@ class WAMService extends WAM
 
     // runQuery compiles a query given by s into a WAM program, adds it to the program in memory
     // and jumps to the label "query$", starting the execution
-    public function runQuery($s): array
+    public function runQuery(string $s): array
     {
         $qc = new QueryCompiler($this);
         $this->reset();
