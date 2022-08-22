@@ -9,14 +9,14 @@ use Trismegiste\Prolog\Program;
  * Test for WAMService : example of business rules
  * for e-commerce
  */
-class WAMBasketTest extends WAM_TestCase
+class WAMBasketTest extends \Tests\Trismegiste\Prolog\WamTestCase
 {
 
     public function testFixtures()
     {
         $wam = new WAMService();
 
-        $solve = $wam->runQuery("consult('" . FIXTURES_DIR . "basket.pro').");
+        $solve = $wam->runQuery("consult('" . __DIR__ . '/fixtures/' . "basket.pro').");
         $this->checkSuccess($solve);
 
         return $wam;
@@ -89,7 +89,7 @@ class WAMBasketTest extends WAM_TestCase
     public function testCommentSkipped()
     {
         $compiler = new PrologCompiler(new WAMService());
-        $prog = $compiler->compileFile(FIXTURES_DIR . "basket.pro");
+        $prog = $compiler->compileFile(__DIR__ . '/fixtures/' . "basket.pro");
         $this->assertNotNull($prog);
         // @todo I can't further test the preprocessing because it is not decoupled from compiling : need to refactor
     }

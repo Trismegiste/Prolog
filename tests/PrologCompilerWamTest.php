@@ -10,12 +10,12 @@ use Trismegiste\Prolog\WAMService;
  *
  * @author flo
  */
-class PrologCompilerWamTest extends PHPUnit_Framework_TestCase
+class PrologCompilerWamTest extends \PHPUnit\Framework\TestCase
 {
 
     private $compiler = null;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->compiler = new PrologCompiler(new WAMService());
     }
@@ -25,7 +25,7 @@ class PrologCompilerWamTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(0, strcmp(trim($expected), trim($tested)));
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         unset($this->compiler);
     }

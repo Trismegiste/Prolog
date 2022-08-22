@@ -5,14 +5,14 @@ use Trismegiste\Prolog\WAMService;
 /**
  * Test for WAMService : example of classical non deterministic problem
  */
-class WAMEightQueensTest extends WAM_TestCase
+class WAMEightQueensTest extends \Tests\Trismegiste\Prolog\WamTestCase
 {
 
     public function testFixtures()
     {
         $wam = new WAMService();
 
-        $solve = $wam->runQuery("consult('" . FIXTURES_DIR . "eightqueens.pro').");
+        $solve = $wam->runQuery("consult('" . __DIR__ . '/fixtures/' . "eightqueens.pro').");
         $this->checkSuccess($solve);
 
         return $wam;

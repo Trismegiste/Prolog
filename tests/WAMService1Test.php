@@ -9,14 +9,14 @@ use Trismegiste\Prolog\Program;
  *
  * @author flo
  */
-class WAMService1Test extends WAM_TestCase
+class WAMService1Test extends \Tests\Trismegiste\Prolog\WamTestCase
 {
 
     public function testFixtures1()
     {
         $wam = new WAMService();
 
-        $solve = $wam->runQuery("consult('" . FIXTURES_DIR . "fixtures1.pro').");
+        $solve = $wam->runQuery("consult('" . __DIR__ . '/fixtures/' . "fixtures1.pro').");
         $this->checkSuccess($solve);
 
         return $wam;

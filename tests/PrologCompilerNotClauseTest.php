@@ -11,17 +11,17 @@ use Trismegiste\Prolog\Program;
  *
  * @author flo
  */
-class PrologCompilerNotClauseTest extends PHPUnit_Framework_TestCase
+class PrologCompilerNotClauseTest extends \PHPUnit\Framework\TestCase
 {
 
     private $compiler = null;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->compiler = new PrologCompiler(new WAMService());
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         unset($this->compiler);
     }

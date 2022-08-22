@@ -3,3 +3,4 @@
 /doc/coverage
 /doc/api
 /composer.lock
+.phpunit.result.cache

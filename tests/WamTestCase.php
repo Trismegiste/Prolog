@@ -1,11 +1,13 @@
 <?php
 
+namespace Tests\Trismegiste\Prolog;
+
 /**
  * This is a prototype for testing WAMService
  *
  * @author flo
  */
-class WAM_TestCase extends PHPUnit_Framework_TestCase
+abstract class WamTestCase extends \PHPUnit\Framework\TestCase
 {
 
     protected function checkSuccess($solve)

@@ -6,14 +6,14 @@ use Trismegiste\Prolog\Program;
 /**
  * Test for WAMService : metalogic : call, cut, assert, retract
  */
-class WAMMetalogicTest extends WAM_TestCase
+class WAMMetalogicTest extends \Tests\Trismegiste\Prolog\WamTestCase
 {
 
     public function testFixtures3()
     {
         $wam = new WAMService();
 
-        $solve = $wam->runQuery("consult('" . FIXTURES_DIR . "fixtures3.pro').");
+        $solve = $wam->runQuery("consult('" . __DIR__ . '/fixtures/' . "fixtures3.pro').");
         $this->checkSuccess($solve);
 
         return $wam;

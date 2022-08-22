@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="tests/bootstrap.php" colors="true">
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true">
+    <coverage processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">src</directory>
+        </include>
+        <report>
+            <html outputDirectory="./docs/coverage" lowUpperBound="50" highLowerBound="90"/>
+        </report>
+    </coverage>
     <testsuites>
-        <testsuite name="unit">
-            <directory>./tests</directory>
-            <exclude>./tests/WAMEightQueensTest.php</exclude>
+        <testsuite name="default">
+            <directory suffix="Test.php">tests</directory>
         </testsuite>
     </testsuites>
-
-    <filter>
-        <whitelist addUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">src</directory>
-        </whitelist>
-    </filter>
-
-    <logging>
-        <log type="coverage-html" target="doc/coverage" charset="UTF-8"
-             yui="true" highlight="false"
-             lowUpperBound="50" highLowerBound="90"/>
-    </logging>
+    <logging/>
 </phpunit>

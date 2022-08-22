@@ -9,13 +9,21 @@
         }
     ],
     "require": {
-        "php": ">=5.4.3"
+        "php": ">=7.4"
     },
     "autoload": {
-        "psr-0": {
+        "psr-4": {
             "Trismegiste\\Prolog\\": "src"
+        }
+    },  
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\Trismegiste\\Prolog\\": "tests/"
         }
     },
     "license": "CC-BY-SA-3.0",
-    "version": "1.4"
+    "version": "2.0",
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
 }

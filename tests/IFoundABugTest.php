@@ -15,7 +15,7 @@ use Trismegiste\Prolog\Program;
  * Someone (you, me, anyone) fix it and make a Pull Request for the fix
  * Eventually I'll refactor IFoundABugTest class to move the test in the right place
  */
-class IFoundABugTest extends WAM_TestCase
+class IFoundABugTest extends Tests\Trismegiste\Prolog\WamTestCase
 {
 
     public function testTicketXXXXX()

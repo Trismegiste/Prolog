@@ -8,7 +8,7 @@ use Trismegiste\Prolog\PrologContext;
  *
  * @author Flo
  */
-class PrologContextTest extends WAM_TestCase
+class PrologContextTest extends \Tests\Trismegiste\Prolog\WamTestCase
 {
 
     public function testAssertClause()

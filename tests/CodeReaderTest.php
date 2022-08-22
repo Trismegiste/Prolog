@@ -7,13 +7,13 @@ use Trismegiste\Prolog\CodeReader;
  *
  * @author flo
  */
-class CodeReaderTest extends PHPUnit_Framework_TestCase
+class CodeReaderTest extends \PHPUnit\Framework\TestCase
 {
 
     public function testCompile()
     {
         $tempFile = tempnam('.', 'wam');
-        CodeReader::prologToWamCode(FIXTURES_DIR . 'basket.pro', $tempFile);
+        CodeReader::prologToWamCode(__DIR__ . '/fixtures/basket.pro', $tempFile);
         return $tempFile;
     }
 
@@ -31,4 +31,3 @@ class CodeReaderTest extends PHPUnit_Framework_TestCase
     }
 
 }
-

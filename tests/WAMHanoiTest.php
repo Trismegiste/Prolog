@@ -8,14 +8,14 @@ use Trismegiste\Prolog\Program;
 /**
  * Test for WAMService : example of classical non deterministic problem
  */
-class WAMHanoiTest extends WAM_TestCase
+class WAMHanoiTest extends \Tests\Trismegiste\Prolog\WamTestCase
 {
 
     public function testFixtures()
     {
         $wam = new WAMService();
 
-        $solve = $wam->runQuery("consult('" . FIXTURES_DIR . "hanoi.pro').");
+        $solve = $wam->runQuery("consult('" . __DIR__ . '/fixtures/' . "hanoi.pro').");
         $this->checkSuccess($solve);
 
         return $wam;
