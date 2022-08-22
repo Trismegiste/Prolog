@@ -8,6 +8,7 @@ namespace Trismegiste\Prolog;
  *
  * developed:   December 2001 until February 2002
  * ported:      July 2012
+ * Migration to PHP 7.4:    August 2022
  *
  * Program contains the WAM program management class Program. A Program
  * consists of an array of Statements (cf. Statement).

@@ -37,7 +37,7 @@ abstract class PrologContext
     /**
      * Load a WAM code in context
      */
-    public function loadWam($filename)
+    public function loadWam(string $filename)
     {
         return $this->runQuery("load('$filename').");
     }
@@ -45,7 +45,7 @@ abstract class PrologContext
     /**
      * Load a Prolog program in context
      */
-    public function loadProlog($filename)
+    public function loadProlog(string $filename)
     {
         return $this->runQuery("consult('$filename').");
     }
