@@ -76,26 +76,25 @@ abstract class WAM extends PrologContext
     protected $benchmarkOn = 0;   // show benchmark information?
     protected $maxOpCount = 50000000;  // artificial stack overflow limit
     public $opCount, $backtrackCount;
-    protected /* Program */ $p;         // the program(s) loaded into memory
-    protected /* Trail */ $trail;       // undo-list (WAM trail)
+    protected Program $p;         // the program(s) loaded into memory
+    protected Trail $trail;       // undo-list (WAM trail)
     protected $failed;    // set to true upon an unsuccessful binding operation
-    protected $displayQValue = array(); //new boolean[100];   // which Query-Variables do have to displayed upon success?
-    protected $displayQCount = 0;     // how many of them?
+    protected array $displayQValue = []; //new boolean[100];   // which Query-Variables do have to displayed upon success?
+    protected int $displayQCount = 0;     // how many of them?
     // the WAM's register set
-    protected $queryVariables = array(); // query variables, to be accessed by Q1, Q2, and so on
-    protected $programCounter = 0; // program counter
-    protected $continuationPointer = 0; // continuation pointer
+    protected array $queryVariables = []; // query variables, to be accessed by Q1, Q2, and so on
+    protected int $programCounter = 0; // program counter
+    protected int $continuationPointer = 0; // continuation pointer
     protected $choicePoint = null; // last choicepoint on stack
     protected $cutPoint = null; // current choicepoint for cut instruction
     protected $env = null; // last environment on stack
-    protected $arguments = array();      // argument registers
+    protected array $arguments = [];      // argument registers
 
     /**
      * creates a new WAM with program data initialized to aProgram
      *
      * @param Program $aProgram
      */
-
     public function __construct(Program $aProgram)
     {
         $aProgram->owner = $this;
@@ -106,7 +105,7 @@ abstract class WAM extends PrologContext
     /**
      * resets sets all WAM parameters to their initial values
      */
-    protected function reset()
+    protected function reset(): void
     {
         $this->arguments = array();  // no argument registers so far
         $this->arguments[] = new Variable();
@@ -141,15 +140,15 @@ abstract class WAM extends PrologContext
      * @param string $s
      * @param int $debugLevel
      */
-    public function debug($s, $debugLevel)
+    public function debug($s, $debugLevel): void
     {
         if ($debugLevel < 0) {
-            if ($this->benchmarkOn > 0)
+            if ($this->benchmarkOn > 0) {
                 $this->writeLn($s);
-        }
-        else
-        if ($this->debugOn >= $debugLevel)
+            }
+        } else if ($this->debugOn >= $debugLevel) {
             $this->writeLn($s);
+        }
     }
 
     /**
@@ -158,7 +157,7 @@ abstract class WAM extends PrologContext
      * @param integer $i
      * @return string
      */
-    protected function int2FormatStr($i)
+    protected function int2FormatStr($i): string
     {
         return str_pad($i, 4, '0', STR_PAD_LEFT);
     }
@@ -167,7 +166,7 @@ abstract class WAM extends PrologContext
      * displays the values of all internal parameters that can be modyfied
      * using the "set" command
      */
-    protected function displayInternalVariables()
+    protected function displayInternalVariables(): void
     {
         $this->getInternalVariable("autostop");
         $this->getInternalVariable("benchmark");
@@ -175,7 +174,7 @@ abstract class WAM extends PrologContext
     }
 
     // sets the internal parameter specified by variable to a new value
-    protected function setInternalVariable($variable, $value)
+    protected function setInternalVariable($variable, $value): void
     {
         try {
             switch ($variable) {
@@ -196,7 +195,7 @@ abstract class WAM extends PrologContext
     }
 
     // displays the value of the internal parameter specified by variable
-    protected function getInternalVariable($variable)
+    protected function getInternalVariable($variable): void
     {
         switch ($variable) {
             case "autostop" :
@@ -213,15 +212,17 @@ abstract class WAM extends PrologContext
         }
     }
 
-    protected function parseInt($number)
+    protected function parseInt($number): int
     {
-        if (!is_numeric($number))
+        if (!is_numeric($number)) {
             throw new \InvalidArgumentException('NumberFormatException');
+        }
+
         return (int) $number;
     }
 
     // returns the Variable pointer belonging to a string, e.g. "A3", "Y25"
-    protected function get_ref($name)
+    protected function get_ref(string $name): ?Variable
     {
         $anArray = null;
         switch ($name[0]) {
@@ -235,13 +236,15 @@ abstract class WAM extends PrologContext
         }
         $index = (int) substr($name, 1);
         $cnt = count($anArray);
-        while ($cnt++ < ($index + 1))
+        while ($cnt++ < ($index + 1)) {
             $anArray[] = new Variable();
+        }
+
         return $anArray[$index];
     }
 
     // gives a name to a variable; usually used on Qxx variables that occur within the query
-    protected function create_variable($v, $name)
+    protected function create_variable($v, string $name): void
     {
         if (strcmp($name, "_") != 0) {  // keep "_" from being displayed as solution
             $q = $this->get_ref($v);
@@ -298,9 +301,9 @@ abstract class WAM extends PrologContext
                     break;
                 default: $this->backtrack();
             }
-        }
-        else
+        } else {
             $this->backtrack();
+        }
     }
 
 // end of WAM.comparison(String, String, String)
@@ -728,8 +731,7 @@ abstract class WAM extends PrologContext
                 if ($v2->tag == self::CON) {
                     if (array_key_exists($v2->value, $this->p->labels))
                         $target = $this->p->labels[$v2->value];
-                }
-                else if ($v2->tag == self::STR) {
+                } else if ($v2->tag == self::STR) {
                     if (array_key_exists($v2->head->value, $this->p->labels)) {
                         $target = $this->p->labels[$v2->head->value];
                         $tail = $v2->tail;
@@ -852,8 +854,7 @@ abstract class WAM extends PrologContext
             $v = new Variable("", $label);
             $v->tag = self::ASSERT;
             $this->trail->addEntry($v);
-        }
-        else
+        } else
             $this->backtrack();
     }
 
@@ -883,8 +884,7 @@ abstract class WAM extends PrologContext
                 $s->arg1 = "";
             }
             return true;
-        }
-        else
+        } else
             return false;
     }
 
@@ -905,20 +905,25 @@ abstract class WAM extends PrologContext
     }
 
     // consult compiles a prolog program and loads the resulting code into memory
-    protected function consult($fileName)
+    protected function consult(string $fileName)
     {
         $pc = new PrologCompiler($this);
         $prog = $pc->compileFile($fileName);
-        if ($prog == null)
+
+        if (is_null($prog)) {
             if (false === strpos($fileName, ".pro")) {  // if compilation didn't work, try with different file extension
                 $this->writeLn("Trying \"" . $fileName . ".prolog\" instead.");
                 $prog = $pc->compileFile($fileName . ".prolog");
             }
-        if ($prog == null)  // program could not be compiled/loaded for whatever reason
+        }
+
+        if (is_null($prog)) {  // program could not be compiled/loaded for whatever reason
             $this->backtrack();
-        else {
-            if ($this->debugOn > 1)  // in case of debug mode, display the WAM code
+        } else {
+            if ($this->debugOn > 1) { // in case of debug mode, display the WAM code
                 $this->writeLn($prog->__toString());
+            }
+
             $this->p->owner = $this;
             $this->p->addProgram($prog);  // add program to that already in memory
             $this->p->updateLabels();  // and don't forget to update the jump labels
@@ -1057,12 +1062,14 @@ abstract class WAM extends PrologContext
                     $this->backtrack();
             }
 
-            if ($this->debugOn > 1)
+            if ($this->debugOn > 1) {
                 $this->traceOn();
+            }
         } // end of while (programCounter >= 0)
         if ($this->failed) {
-            while ($this->choicePoint !== null)
+            while ($this->choicePoint !== null) {
                 $this->backtrack();
+            }
             $this->backtrack();
         }
         if ($this->benchmarkOn > 0) {
